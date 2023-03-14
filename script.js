@@ -25,22 +25,32 @@ function playRound(playerSelection, computerSelection) {
             
     else if (playerSelection === 'rock' && computerSelection === 'paper') {
         result = "Computer chose paper. You lose!"
+        computerScore += 1
+        pComptuer.textContent = "Computer score: " + computerScore
     }
 
     else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         result = "Computer chose scissors. You lose!"
+        computerScore += 1
+        pComptuer.textContent = "Computer score: " + computerScore
     }
     
     else if (playerSelection === 'paper' && computerSelection === 'rock') {
         result = "Computer chose rock. You win!"
+        playerScore += 1
+        pPlayer.textContent = "Player score: " + playerScore
     }
 
     else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         result = "Computer chose rock. You lose!"
+        computerScore += 1
+        pComptuer.textContent = "Computer score: " + computerScore
     }
 
     else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         result = "Computer chose paper. You win!"
+        playerScore += 1
+        pPlayer.textContent = "Player score: " + playerScore
     }
 
     else  if   (playerSelection === computerSelection) {
@@ -49,18 +59,20 @@ function playRound(playerSelection, computerSelection) {
 
 
     div.textContent = result
-    winner()
+    
+    endGame()
+}
+function endGame() {
+    const div = document.querySelector('.result')
+    if ((playerScore + computerScore == 5) && playerScore > computerScore) {
+        alert('Player wins! Refresh page to play again!')
+        
+    }
+    else if ((playerScore + computerScore == 7) && playerScore < computerScore) {
+        alert('Computer wins! Refresh page to play again!')
+    }
 }
 
-
-function winner() {
-    if (playerScore == 5) {
-        pGame.textContent = "Player wins 5 round game!"
-    }
-    else if (computerScore == 5) {
-        pGame.textContent = "Computer wins 5 round game!"
-    }
-}
 
 // function game() {
 
